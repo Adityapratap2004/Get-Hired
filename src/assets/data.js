@@ -43,8 +43,8 @@ export const companies=[
 
 export const faqs=[
     {
-      "question": "What is Hirrd?",
-      "answer": "Hirrd is a Job Portal Application allows companies to post job listings and users to search and apply for jobs. It provides features for both job seekers and employers, with user-friendly interfaces and secure authentication."
+      "question": "What is get hired?",
+      "answer": "get hired is a Job Portal Application allows companies to post job listings and users to search and apply for jobs. It provides features for both job seekers and employers, with user-friendly interfaces and secure authentication."
     },
     {
       "question": "How do I post a job?",

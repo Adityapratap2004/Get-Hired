@@ -73,6 +73,10 @@
   color:white;
 }
 
+.cl-rootBox{
+  z-index: 1;
+}
+
 
 
 @layer utilities{

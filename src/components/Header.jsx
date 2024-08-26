@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Button } from './ui/button'
-import { SignedIn,SignUp, SignedOut, SignIn, SignInButton, UserButton, useUser } from '@clerk/clerk-react'
-import { BriefcaseBusiness, Heart, PenBox } from 'lucide-react'
+import { SignedIn, SignUp, SignedOut, SignIn, SignInButton, UserButton, useUser } from '@clerk/clerk-react'
+import { BriefcaseBusiness, Heart, X, PenBox } from 'lucide-react'
+
 
 const Header = () => {
     const [showSingIn, setShowSingIn] = useState(false);
-    const [showSignUp,setShowSingUp]=useState(false);
+    const [showSignUp, setShowSingUp] = useState(false);
 
     const [search, setSearch] = useSearchParams();
     const { user } = useUser();
@@ -21,21 +22,14 @@ const Header = () => {
 
     useEffect(() => {
         if (search.get("sign-in")) {
-            setShowSingIn(true);  
+            setShowSingIn(true);
         }
-        if(search.get('sign-up')){
+        if (search.get('sign-up')) {
             setShowSingUp(true);
         }
     }, [search])
 
-    useEffect(() => {
-        if (showSingIn) {
-            document.body.style.overflow = 'hidden';
-        } 
-        return () => {
-            document.body.style.overflow = '';
-        };
-    }, [showSingIn]);
+
 
     return (
         <>
@@ -80,29 +74,51 @@ const Header = () => {
                             </UserButton.MenuItems>
                         </UserButton>
                     </SignedIn>
-                    
+
                 </div>
             </nav>
             {
                 showSingIn && <div className=' fixed bg-black inset-0 flex justify-center items-center bg-opacity-50'
                     onClick={handleOverlayClick}
                 >
-                    <SignIn
-                        signUpForceRedirectUrl='/onboarding'
-                        fallbackRedirectUrl='/onboarding'
-                        signUpUrl='?sign-up=true.'
-                    />
+                    <div className='relative p-1'>
+                        <button
+                            onClick={() => setShowSingIn(false)}
+                            className=" z-50 absolute top-4 right-5 "
+                        >
+                            <X />
+                        </button>
+                        <SignIn
+                            signUpForceRedirectUrl='/onboarding'
+                            fallbackRedirectUrl='/onboarding'
+                            signUpUrl='?sign-up=true.'
+
+                        />
+                    </div>
+
+
                 </div>
             }
             {
                 showSignUp && <div className=' fixed bg-black inset-0 flex justify-center items-center bg-opacity-50'
                     onClick={handleOverlayClick}
                 >
-                    <SignUp
-                        signUpForceRedirectUrl='/onboarding'
-                        fallbackRedirectUrl='/onboarding'
-                        signInUrl='?sign-in=true'
-                    />
+                    <div className='relative p-1'>
+                        <button
+                            onClick={() => setShowSingUp(false)}
+                            className=" z-50 absolute top-4 right-5 "
+                        >
+                            <X />
+
+                        </button>
+                        <SignUp
+                            signUpForceRedirectUrl='/onboarding'
+                            fallbackRedirectUrl='/onboarding'
+                            signInUrl='?sign-in=true'
+                        >
+
+                        </SignUp>
+                    </div>
                 </div>
             }
         </>
