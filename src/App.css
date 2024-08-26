@@ -1,0 +1,10 @@
+
+
+body {
+  background-color: #1a1a1a; /* Fallback background color */
+  background-image: 
+      radial-gradient(circle at 60% 20%, rgba(253, 0, 0, 0.2), transparent 35%),
+      radial-gradient(circle at 10% 60%, rgba(0, 0, 255, 0.18), transparent 20%);
+  background-size: cover;
+  background-attachment: fixed;
+}
